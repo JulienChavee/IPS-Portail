@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language>
+ <app key="dimension" version="10028">
+  <word key="__app_dimension" js="0">Dimension</word>
+  <word key="block_dimension" js="0">Position des portails</word>
+  <word key="block_dimension_desc" js="0">Affiche la liste des portails</word>
+  <word key="block_dimensionTopOuverture" js="0">Meilleurs chercheurs de portails</word>
+  <word key="block_dimensionTopOuverture_desc" js="0">Affiche la liste des meilleurs chercheurs de portails</word>
+  <word key="menu__dimension_manage" js="0">Module des portails</word>
+  <word key="menu__dimension_manage_settings" js="0">Settings</word>
+  <word key="dimension_allowed_group" js="0">Groupes autorisés</word>
+  <word key="dimension_setting_permission" js="0">Permission d'accès</word>
+  <word key="dimension_widget_title" js="0">Position des portails</word>
+  <word key="dimension_xelorium" js="0">Xélorium</word>
+  <word key="dimension_enutrosor" js="0">Énutrosor</word>
+  <word key="dimension_srambad" js="0">Srambad</word>
+  <word key="dimension_ecaflipus" js="0">Ecaflipus</word>
+  <word key="dimension_position" js="0">Position</word>
+  <word key="dimension_utilisation" js="0">{!#[0:Utilisation restante][1:Utilisation restante][?:Utilisations restantes]}</word>
+  <word key="dimension_lastEdit" js="0">Mis à jour</word>
+  <word key="dimension_by" js="0">Par</word>
+  <word key="dimension_edit" js="0">Modifier</word>
+  <word key="dimension_bonus" js="0">Bonus</word>
+  <word key="dimension_history" js="0">Historique</word>
+  <word key="dimension_button_fav_title" js="0">Mettre en favoris ce portail</word>
+  <word key="dimension_arbre_hakam" js="0"><![CDATA[Se situe dans l&apos;Arbre Hakam]]></word>
+  <word key="dimension_widget_title_topOuverture" js="0">Meilleurs chercheurs de portails</word>
+  <word key="dimension_week" js="0">Semaine</word>
+  <word key="dimension_month" js="0">Mois</word>
+  <word key="dimension_year" js="0">Année</word>
+  <word key="dimension_all" js="0">Toujours</word>
+  <word key="dimension_updateForm_portail" js="0">Portail à modifier</word>
+  <word key="dimension_updateForm_position" js="0">Position</word>
+  <word key="dimension_updateForm_arbre_hakam" js="0">Arbre Hakam</word>
+  <word key="dimension_updateForm_arbre_hakam_desc" js="0">Le portail se situe dans l'Arbre Hakam ?</word>
+  <word key="dimension_updateForm_utilisation" js="0">Utilisations restantes</word>
+  <word key="dimension_updateForm_bonus" js="0">Bonus</word>
+  <word key="dimension_popup_updatePortail" js="0">Mise à jour du portail</word>
+  <word key="dimension_popup_history" js="0">Historique des modifications du portail</word>
+  <word key="dimension_update_noModificationFound" js="0">Aucune modification détectée</word>
+  <word key="dimension_fav_saved" js="0">Favori enregistré</word>
+ </app>
+</language>

@@ -1,0 +1,51 @@
+1.1.4.2 - 04/05/2016
+
+- Si l’on change le portail à modifier alors que le popup d’update est déjà ouvert, les bonus n’étaient pas correctement mis à jour
+
+1.1.4.1 - 13/04/2016
+
+- Correction de l’hovercard lorsque le bonus actuel est inconnu
+
+
+1.1.4 - 11/04/2016
+
+- Ajout d’une colonne pour savoir si le portail se trouve dans l’arbre hakam
+
+1.1.3.4 - 06/04/2016
+
+- Correction de la position du bonus précédent si celui-ci se trouve à la fin du tableau
+
+1.1.3.3 - 06/04/2016
+
+- Modification de la mise en page de l’hovercard
+- La position des bonus précédent, suivant et actuel dans le tableau des bonus précédent est maintenant calculé avant l’envoi des données au template
+
+1.1.3.2 - 05/04/2016
+
+- Correction du script d’upgrade
+
+1.1.3.1 - 05/04/2016
+
+- Ajout du script d’upgrade afin de modifier les valeurs existantes dans la BD
+
+1.1.3 - 05/04/2016
+
+- Ajout de la vision des bonus dans l’ordre, via un hovercard
+
+1.1.2.1 - 18/02/2016
+
+- Le portail venant d’être modifié n’est plus considéré comme site favoris
+
+1.1.2 - 18/02/2016
+
+- Lors de la modification d’un portail, le rafraichissement de la page repositionne sur l’onglet du portail venant d’être modifié
+- Possibilité de choisir un portail en favoris (la modification d’un portail est prioritaire sur le favoris)
+
+1.1.1.1 - 05/02/2016
+
+- Ajout des bonus propres à Ecaflipus
+
+1.1.1 - 03/02/2016
+
+- Correction de la flèche du widget de la position des dimensions lors de l’affichage mobile
+- Ajout d’ecaflipus

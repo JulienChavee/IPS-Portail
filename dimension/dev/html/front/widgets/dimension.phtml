@@ -1,0 +1,26 @@
+<ips:template parameters="$portail, $fav, $name, $ret" />
+<h3 class='ipsWidget_title ipsType_reset'>{lang="dimension_widget_title"}</h3>
+
+<div class='ipsTabs ipsTabs_small ipsTabs_stretch ipsClearfix' id='dimensionPosition' data-ipsTabBar data-ipsTabBar-updateURL='false' data-ipsTabBar-contentArea='#dimensionPortailPosition'>
+	<a href='#dimensionPosition' data-action='expandTabs'><i class='fa fa-caret-down'></i></a>
+	<ul role="tablist" class='ipsList_reset'>
+		<li role="presentation">
+			<a href='{url="app=dimension&module=system&controller=ajax&do=dimensionPosition&dimension=xelorium"}' role='tab' id='el_xelorium' class='ipsTabs_item {{if $ret == 1 }}ipsTabs_activeItem{{endif}}' aria-selected="true">{lang="dimension_xelorium"}</a>
+		</li>
+		<li role="presentation">
+			<a href='{url="app=dimension&module=system&controller=ajax&do=dimensionPosition&dimension=srambad"}' role='tab' id='el_srambad' class='ipsTabs_item {{if $ret == 2 }}ipsTabs_activeItem{{endif}}' aria-selected="true">{lang="dimension_srambad"}</a>
+		</li>		
+		<li role="presentation">
+			<a href='{url="app=dimension&module=system&controller=ajax&do=dimensionPosition&dimension=enutrosor"}' role='tab' id='el_enutrosor' class='ipsTabs_item {{if $ret == 3 }}ipsTabs_activeItem{{endif}}' aria-selected="true">{lang="dimension_enutrosor"}</a>
+		</li>
+		<li role="presentation">
+			<a href='{url="app=dimension&module=system&controller=ajax&do=dimensionPosition&dimension=ecaflipus"}' role='tab' id='el_ecaflipus' class='ipsTabs_item {{if $ret == 4 }}ipsTabs_activeItem{{endif}}' aria-selected="true">{lang="dimension_ecaflipus"}</a>
+		</li>
+	</ul>
+</div>
+
+<section id='dimensionPortailPosition' class='ipsWidget_inner'>
+	<div id="ipsTabs_dimensionPosition_el_{$name}_panel" class='ipsTabs_panel'>
+		{template="dimensionRow" group="widgets" app="dimension" params="$portail, $fav"}
+	</div>
+</section>

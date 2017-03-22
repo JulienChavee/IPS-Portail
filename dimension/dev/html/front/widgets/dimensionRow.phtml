@@ -1,0 +1,47 @@
+<ips:template parameters="$position, $fav" />
+
+{{$member = \IPS\Member::load($position['member'])->link('', true);}}
+{{if $position['bonus'] > 0}}
+	{{$bonus = \IPS\Db::i()->select( '*', 'dimension_bonus', array( 'id=?', $position['bonus'] ) )->first();}}
+{{else}}
+	{{$bonus = array ( 'name' => 'Bonus inconnu', 'description' => '' );}}
+{{endif}}
+{{$timestamp = strtotime($position['date']);}}
+
+<div class='ipsPad_half'>
+	<div class="ipsType_center">
+		<div class="ipsDataItem_statsLarge">
+			<span class="ipsDataItem_stats_number">
+				<i class="fa fa-map-marker"></i> [{$position['coordx']},{$position['coordy']}]
+			</span>
+		</div>
+		{{if $position['arbre_hakam']}}
+			<span class="ipsType_light" title='{lang="dimension_arbre_hakam"}' data-ipsTooltip><i class="fa fa-tree"></i> <b>Arbre Hakam</b></span>
+		{{endif}}
+	</div>
+
+	<div class="ipsType_center ipsType_light">
+		{lang="dimension_by"} {$member|raw} • {datetime="$timestamp"}
+	</div>
+
+	<hr class="ipsHr">
+
+	<h1 id="dimension_utilisation" class="sAppName ipsType_center">
+		<span class="sAppBadge {{if $position['utilisation'] < 20}} sAppBadgeRed {{elseif $position['utilisation'] < 130/2}} sAppBadgeYellow {{else}} sAppBadgeGreen {{endif}}">{$position['utilisation']}</span> {lang="dimension_utilisation" pluralize="$position['utilisation']"}
+	</h1>
+
+	<hr class="ipsHr">
+
+	<div class="ipsType_center">
+		<h1 class="sAppNameH2">
+			<a href="#" data-ipshover data-ipshover-target={url="app=dimension&module=system&controller=ajax&do=hovercard&id={$position['idPortail']}"}>{$bonus['name']}</a>
+		</h1>
+
+		<a href={url="app=dimension&module=system&controller=ajax&do=updatePortail&id={$position['idPortail']}&idBonus={$position['bonus']}&nbUtilisation={$position['utilisation']}&coordx={$position['coordx']}&coordy={$position['coordy']}&arbre={$position['arbre_hakam']}"} data-ipsDialog data-ipsDialog-size="narrow" data-ipsDialog-title="{lang="dimension_popup_updatePortail"}" class="ipsButton ipsButton_primary ipsButton_verySmall ipsSpacer_top ipsType_center"><i class="fa fa-edit"></i> {lang="dimension_edit"}</a>
+
+		<a href={url="app=dimension&module=system&controller=ajax&do=history&id={$position['idPortail']}"} data-ipsDialog data-ipsDialog-size="narrow" data-ipsDialog-title="{lang="dimension_popup_history"}" class="ipsButton ipsButton_primary ipsButton_verySmall ipsSpacer_top ipsType_center"><i class="fa fa-history"></i> {lang="dimension_history"}</a>
+
+		<a href={url="app=dimension&module=system&controller=ajax&do=fav&id={$position['idPortail']}"} title="{lang='dimension_button_fav_title'}" class="ipsButton ipsButton_primary ipsButton_verySmall ipsSpacer_top ipsType_center"><i class="fa {{if !is_null($fav) && $fav == $position['idPortail']}} fa-star {{else}} fa-star-o {{endif}}"></i></a>
+	</div>
+	
+</div>

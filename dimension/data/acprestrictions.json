@@ -1,0 +1,12 @@
+{
+    "settings": {
+        "setting": {
+            "setting_manage": "setting_manage"
+        }
+    },
+    "manage": {
+        "settings": {
+            "settings_manage": "settings_manage"
+        }
+    }
+}

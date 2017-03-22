@@ -1,0 +1,43 @@
+{
+    "1": {
+        "method": "addColumn",
+        "params": [
+            "dimension_positionPortail",
+            {
+                "name": "arbre_hakam",
+                "type": "BIT",
+                "length": 1,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": "0",
+                "comment": "",
+                "unsigned": false,
+                "zerofill": false,
+                "auto_increment": false,
+                "binary": false
+            }
+        ]
+    },
+    "2": {
+        "method": "changeColumn",
+        "params": [
+            "dimension_positionPortail",
+            "arbre_hakam",
+            {
+                "name": "arbre_hakam",
+                "type": "TINYINT",
+                "length": 1,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": "0",
+                "comment": "",
+                "unsigned": true,
+                "zerofill": false,
+                "auto_increment": false,
+                "binary": false
+            }
+        ]
+    }
+}

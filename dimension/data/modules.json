@@ -1,0 +1,14 @@
+{
+    "front": {
+        "system": {
+            "default_controller": "",
+            "protected": 0
+        }
+    },
+    "admin": {
+        "manage": {
+            "default_controller": "settings",
+            "protected": 0
+        }
+    }
+}

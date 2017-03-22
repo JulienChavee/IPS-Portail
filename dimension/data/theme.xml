@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme name="Default" author_name="Invision Power Services, Inc" author_url="http://www.invisionpower.com">
+ <template template_group="forms" template_name="updateFormPopup" template_data="$id, $action, $elements, $hiddenValues, $actionButtons, $uploadField, $class='', $attributes=array(), $sidebar, $form=NULL" template_location="front" template_app="dimension"><![CDATA[
+<form accept-charset='utf-8' class="ipsForm {$class}" action="{$action}" method="post" {{if $uploadField}}enctype="multipart/form-data"{{endif}} {{foreach $attributes as $k => $v}}{$k}="{$v}"{{endforeach}} data-ipsForm data-controller="dimension.changeBonus">
+
+	<input type="hidden" name="{$id}_submitted" value="1">
+
+	{{foreach $hiddenValues as $k => $v}}
+		{{if is_array($v)}}
+			{{foreach $v as $_k => $_v}}
+				<input type="hidden" name="{$k}[{$_k}]" value="{$_v}">
+			{{endforeach}}
+		{{else}}
+			<input type="hidden" name="{$k}" value="{$v}">
+		{{endif}}
+	{{endforeach}}
+	{{if $uploadField}}
+		<input type="hidden" name="MAX_FILE_SIZE" value="{$uploadField}">
+		<input type="hidden" name="plupload" value="{expression="md5( uniqid() )"}">
+	{{endif}}
+
+	{{if count( $form->elements ) < 2}}
+		<div class="ipsPad">
+			{{if !empty( $sidebar )}}
+				<div class='ipsGrid ipsGrid_collapsePhone'>
+					<div class='ipsGrid_span8'>
+			{{endif}}
+				<ul class='ipsList_reset'>
+					{{foreach $elements as $collection}}
+						{{foreach $collection as $input}}
+							{{if $input->name == 'dimension_updateForm_position'}}
+								<li class="ipsFieldRow ipsClearfix " id="{$id}_{$input->name}">
+		
+									<label class="ipsFieldRow_label" for="{$input->name}">
+										{lang="{$input->name}"} {{if $input->required}}<span class="ipsFieldRow_required">{lang="required"}</span>{{endif}}
+									</label>
+		
+									<div class="ipsFieldRow_content">
+										<span><strong>X</strong> </span>
+										<input type="number" name="{$input->name}[start]" size="3" value="{$input->start->value}" class="ipsField_tiny" min="{$input->start->options['min']}" max="{$input->start->options['max']}" step="any">
+										
+
+										<span style="margin-left: 15px;"><strong>Y</strong> </span>
+										<input type="number" name="{$input->name}[end]" size="3" value="{$input->end->value}" class="ipsField_tiny" min="{$input->end->options['min']}" max="{$input->end->options['max']}" step="any">
+									</div>
+	
+								</li>
+							{{elseif is_object( $input ) }}
+								{$input->rowHtml($form)|raw}
+							{{else}}
+								{$input|raw}
+							{{endif}}
+						{{endforeach}}
+					{{endforeach}}
+				</ul>
+			{{if !empty( $sidebar )}}
+					</div>
+					<div class='ipsGrid_span4'>
+						{expression="array_pop( $sidebar )" raw="true"}
+					</div>
+				</div>
+			{{endif}}
+		</div>
+	{{else}}
+		<div class='ipsTabs ipsClearfix ipsJS_show' id='tabs_{$id}' data-ipsTabBar data-ipsTabBar-contentArea='#ipsTabs_content_{$id}'>
+			<a href='#tabs_{$id}' data-action='expandTabs'><i class='fa fa-caret-down'></i></a>
+			<ul role='tablist'>
+				{{foreach $elements as $name => $content}}
+					<li>
+						<a href='#ipsTabs_tabs_{$id}_{$id}_tab_{$name}_panel' id='{$id}_tab_{$name}' class="ipsTabs_item {{if $name == request.tab}}ipsTabs_activeItem{{endif}}" role="tab">
+							{{foreach $content as $element}}{{if !is_string( $element ) and $element->error}}<i class="fa fa-exclamation-circle"></i> {{break;}}{{endif}}{{endforeach}} {lang="$name"}
+						</a>
+					</li>
+				{{endforeach}}
+			</ul>
+		</div>
+		<div id='ipsTabs_content_{$id}' class=''>
+			{{foreach $elements as $name => $content}}
+				<div id='ipsTabs_tabs_{$id}_{$id}_tab_{$name}_panel' class="ipsTabs_panel ipsPad" aria-labelledby="{$id}_tab_{$name}" aria-hidden="false">
+					<ul class='ipsList_reset'>
+						{{foreach $content as $input}}
+							{{if is_object( $input ) }}
+								{$input->rowHtml($form)|raw}
+							{{else}}
+								{$input|raw}
+							{{endif}}
+						{{endforeach}}
+					</ul>
+				</div>
+			{{endforeach}}
+		</div>
+	{{endif}}
+	<ul class="ipsPad ipsToolList ipsToolList_horizontal ipsList_reset ipsClearfix ipsAreaBackground">
+		{{foreach $actionButtons as $button}}
+			<li>{$button|raw}</li>
+		{{endforeach}}
+	</ul>]]></template>
+ <template template_group="widgets" template_name="dimension" template_data="$portail, $fav, $name, $ret" template_location="front" template_app="dimension"><![CDATA[<h3 class='ipsWidget_title ipsType_reset'>{lang="dimension_widget_title"}</h3>
+
+<div class='ipsTabs ipsTabs_small ipsTabs_stretch ipsClearfix' id='dimensionPosition' data-ipsTabBar data-ipsTabBar-updateURL='false' data-ipsTabBar-contentArea='#dimensionPortailPosition'>
+	<a href='#dimensionPosition' data-action='expandTabs'><i class='fa fa-caret-down'></i></a>
+	<ul role="tablist" class='ipsList_reset'>
+		<li role="presentation">
+			<a href='{url="app=dimension&module=system&controller=ajax&do=dimensionPosition&dimension=xelorium"}' role='tab' id='el_xelorium' class='ipsTabs_item {{if $ret == 1 }}ipsTabs_activeItem{{endif}}' aria-selected="true">{lang="dimension_xelorium"}</a>
+		</li>
+		<li role="presentation">
+			<a href='{url="app=dimension&module=system&controller=ajax&do=dimensionPosition&dimension=srambad"}' role='tab' id='el_srambad' class='ipsTabs_item {{if $ret == 2 }}ipsTabs_activeItem{{endif}}' aria-selected="true">{lang="dimension_srambad"}</a>
+		</li>		
+		<li role="presentation">
+			<a href='{url="app=dimension&module=system&controller=ajax&do=dimensionPosition&dimension=enutrosor"}' role='tab' id='el_enutrosor' class='ipsTabs_item {{if $ret == 3 }}ipsTabs_activeItem{{endif}}' aria-selected="true">{lang="dimension_enutrosor"}</a>
+		</li>
+		<li role="presentation">
+			<a href='{url="app=dimension&module=system&controller=ajax&do=dimensionPosition&dimension=ecaflipus"}' role='tab' id='el_ecaflipus' class='ipsTabs_item {{if $ret == 4 }}ipsTabs_activeItem{{endif}}' aria-selected="true">{lang="dimension_ecaflipus"}</a>
+		</li>
+	</ul>
+</div>
+
+<section id='dimensionPortailPosition' class='ipsWidget_inner'>
+	<div id="ipsTabs_dimensionPosition_el_{$name}_panel" class='ipsTabs_panel'>
+		{template="dimensionRow" group="widgets" app="dimension" params="$portail, $fav"}
+	</div>
+</section>]]></template>
+ <template template_group="widgets" template_name="dimensionRow" template_data="$position, $fav" template_location="front" template_app="dimension"><![CDATA[
+{{$member = \IPS\Member::load($position['member'])->link('', true);}}
+{{if $position['bonus'] > 0}}
+	{{$bonus = \IPS\Db::i()->select( '*', 'dimension_bonus', array( 'id=?', $position['bonus'] ) )->first();}}
+{{else}}
+	{{$bonus = array ( 'name' => 'Bonus inconnu', 'description' => '' );}}
+{{endif}}
+{{$timestamp = strtotime($position['date']);}}
+
+<div class='ipsPad_half'>
+	<div class="ipsType_center">
+		<div class="ipsDataItem_statsLarge">
+			<span class="ipsDataItem_stats_number">
+				<i class="fa fa-map-marker"></i> [{$position['coordx']},{$position['coordy']}]
+			</span>
+		</div>
+		{{if $position['arbre_hakam']}}
+			<span class="ipsType_light" title='{lang="dimension_arbre_hakam"}' data-ipsTooltip><i class="fa fa-tree"></i> <b>Arbre Hakam</b></span>
+		{{endif}}
+	</div>
+
+	<div class="ipsType_center ipsType_light">
+		{lang="dimension_by"} {$member|raw} • {datetime="$timestamp"}
+	</div>
+
+	<hr class="ipsHr">
+
+	<h1 id="dimension_utilisation" class="sAppName ipsType_center">
+		<span class="sAppBadge {{if $position['utilisation'] < 20}} sAppBadgeRed {{elseif $position['utilisation'] < 130/2}} sAppBadgeYellow {{else}} sAppBadgeGreen {{endif}}">{$position['utilisation']}</span> {lang="dimension_utilisation" pluralize="$position['utilisation']"}
+	</h1>
+
+	<hr class="ipsHr">
+
+	<div class="ipsType_center">
+		<h1 class="sAppNameH2">
+			<a href="#" data-ipshover data-ipshover-target={url="app=dimension&module=system&controller=ajax&do=hovercard&id={$position['idPortail']}"}>{$bonus['name']}</a>
+		</h1>
+
+		<a href={url="app=dimension&module=system&controller=ajax&do=updatePortail&id={$position['idPortail']}&idBonus={$position['bonus']}&nbUtilisation={$position['utilisation']}&coordx={$position['coordx']}&coordy={$position['coordy']}&arbre={$position['arbre_hakam']}"} data-ipsDialog data-ipsDialog-size="narrow" data-ipsDialog-title="{lang="dimension_popup_updatePortail"}" class="ipsButton ipsButton_primary ipsButton_verySmall ipsSpacer_top ipsType_center"><i class="fa fa-edit"></i> {lang="dimension_edit"}</a>
+
+		<a href={url="app=dimension&module=system&controller=ajax&do=history&id={$position['idPortail']}"} data-ipsDialog data-ipsDialog-size="narrow" data-ipsDialog-title="{lang="dimension_popup_history"}" class="ipsButton ipsButton_primary ipsButton_verySmall ipsSpacer_top ipsType_center"><i class="fa fa-history"></i> {lang="dimension_history"}</a>
+
+		<a href={url="app=dimension&module=system&controller=ajax&do=fav&id={$position['idPortail']}"} title="{lang='dimension_button_fav_title'}" class="ipsButton ipsButton_primary ipsButton_verySmall ipsSpacer_top ipsType_center"><i class="fa {{if !is_null($fav) && $fav == $position['idPortail']}} fa-star {{else}} fa-star-o {{endif}}"></i></a>
+	</div>
+	
+</div>]]></template>
+ <template template_group="widgets" template_name="dimensionTopOuverture" template_data="$topOuverture" template_location="front" template_app="dimension"><![CDATA[<h3 class='ipsWidget_title ipsType_reset'>{lang="dimension_widget_title_topOuverture"}</h3>
+
+<div class='ipsTabs ipsTabs_small ipsTabs_stretch ipsClearfix' id='dimensionTopOuverture' data-ipsTabBar data-ipsTabBar-updateURL='false' data-ipsTabBar-contentArea='#dimensionPortailTopOuverture'>
+	<a href='#dimensionTopOuverture' data-action='expandTabs'><i class='fa fa-caret-down'></i></a>
+	<ul role="tablist" class='ipsList_reset'>
+		<li>
+			<a href='#ipsTabs_dimensionTopOuverture_el_week_panel' id='el_week' class='ipsTabs_item ipsTabs_activeItem' role="tab" aria-selected='true'>{lang="dimension_week"}</a>
+		</li>
+		<li>
+			<a href='{url="app=dimension&module=system&controller=ajax&do=topPoster&time=month"}' id='el_month' class='ipsTabs_item' role="tab" aria-selected='false'>{lang="dimension_month"}</a>
+		</li>		
+		<li>
+			<a href='{url="app=dimension&module=system&controller=ajax&do=topPoster&time=year"}' id='el_year' class='ipsTabs_item' role="tab" aria-selected='false'>{lang="dimension_year"}</a>
+		</li>
+		<li>
+			<a href='{url="app=dimension&module=system&controller=ajax&do=topPoster&time=all"}' id='el_all' class='ipsTabs_item' role="tab" aria-selected='false'>{lang="dimension_all"}</a>
+		</li>
+	</ul>
+</div>
+
+<section id='dimensionPortailTopOuverture' class='ipsWidget_inner'>
+	<div id="ipsTabs_dimensionTopOuverture_el_week_panel" class='ipsTabs_panel'>
+		{template="dimensionTopOuvertureRow" group="widgets" app="dimension" params="$topOuverture"}
+	</div>
+</section>]]></template>
+ <template template_group="widgets" template_name="dimensionTopOuvertureRow" template_data="$topOuverture" template_location="front" template_app="dimension"><![CDATA[
+<ol class='ipsDataList ipsDataList_reducedSpacing cTopContributors'>
+	{{$idx = 1;}}
+	{{foreach $topOuverture as $memberId => $nbOuverture}}
+		{{$member = \IPS\Member::load( $memberId );}}
+		<li class='ipsDataItem'>
+			<div class='ipsDataItem_icon ipsPos_middle ipsType_center ipsType_large ipsType_light'><strong>{expression="$idx++"}</strong></div>
+			<div class='ipsDataItem_main ipsPhotoPanel ipsPhotoPanel_tiny'>
+				{template="userPhoto" app="core" group="global" params="$member, 'tiny'"}
+				<div>
+					{$member->link()|raw}
+					<br>
+					<span class='ipsRepBadge ipsRepBadge_positive'><i class='fa fa-map-marker'></i> {$nbOuverture}</span>
+				</div>
+			</div>
+		</li>
+	{{endforeach}}
+</ol>]]></template>
+ <template template_group="widgets" template_name="history" template_data="$data" template_location="front" template_app="dimension"><![CDATA[
+<div class='ipsPad'>
+	{{foreach $data as $k => $v}}
+		{{$member = \IPS\Member::load($v['member'])->link('', true);}}
+		{{$timestamp = strtotime($v['date']);}}
+
+		<div class="ipsGrid">
+			<div class="ipsGrid_span6">
+				<h1 id="dimension_utilisation" class="sAppName">
+					<span class="sAppBadge {{if $v['utilisation'] < 20}} sAppBadgeRed {{elseif $v['utilisation'] < 130/2}} sAppBadgeYellow {{else}} sAppBadgeGreen {{endif}}">{$v['utilisation']}</span> {lang="dimension_utilisation" pluralize="$v['utilisation']"}
+				</h1>
+			</div>
+
+			<div class="ipsGrid_span6">
+				<div class="ipsType_center">
+					<div class="ipsDataItem_statsLarge">
+						<span class="ipsDataItem_stats_number">
+							<i class="fa fa-map-marker"></i> [{$v['coordx']},{$v['coordy']}]
+						</span>
+					</div>
+				</div>
+
+				<div class="ipsType_center ipsType_light">
+					{lang="dimension_by"} {$member|raw} • {datetime="$timestamp"}
+				</div>
+			</div>
+		</div>
+		{{if $k != $data->count()-1}}
+			<hr class="ipsHr">
+		{{endif}}
+	{{endforeach}}
+</div>]]></template>
+ <template template_group="widgets" template_name="hovercard" template_data="$array_bonus, $bonus" template_location="front" template_app="dimension"><![CDATA[<div class='ipsGrid ipsPad'>
+	<div class='ipsGrid_span8'>
+		<ul class="progress-indicator nocenter stacked ipsClearFix" data-role="wizardStepbar">
+			{{foreach $array_bonus as $k => $v}}
+				<li class='{{if !empty($bonus) && $bonus["actuel"] == $k}}completed{{elseif !empty($bonus) && $bonus["next"] == $k}}warning{{elseif !empty($bonus) && $bonus["prec"] == $k}}danger{{endif}}'>
+					<span class="bubble"></span>
+					<span class='stacked-text {{if !empty($bonus) && $bonus["next"] == $k}}ipsType_issue{{elseif !empty($bonus) && $bonus["prec"] == $k}}ipsType_warning{{endif}}'>{$k + 1}. {$v['bonus']['name']}</span>
+				</li>
+			{{endforeach}}
+		</ul>
+	</div>
+
+	<div class='ipsGrid_span4'>
+		<strong>Code couleur</strong><br>
+		<i class='fa fa-circle ipsType_success'></i> Bonus actuel<br>
+		<i class='fa fa-circle ipsType_issue'></i> Prochain bonus<br>
+		<i class='fa fa-circle ipsType_warning'></i> Bonus précédent
+	</div>
+</div>]]></template>
+ <template template_group="widgets" template_name="updateForm" template_data="$form" template_location="front" template_app="dimension"><![CDATA[
+<div class='ipsPad'>
+	{$form|raw}
+</div>]]></template>
+ <css css_location="front" css_app="dimension" css_attributes="" css_path="." css_name="dimension.css"><![CDATA[.sAppName {
+	font-size: 18px;
+	font-weight: 500;
+	margin-top: 0;
+}
+
+.sAppNameH2 {
+	font-size: 15px;
+	font-weight: 400;
+	margin-top: 0;
+}
+
+#dimension_utilisation .sAppBadgeRed {
+	background: #b15757;
+}
+
+#dimension_utilisation .sAppBadgeYellow {
+	background: #e67e22;
+}
+
+#dimension_utilisation .sAppBadgeGreen {
+	background: #27ae60;
+}
+
+.sAppBadge {
+	width: 40px;
+	height: 40px;
+	border-radius: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #fff;
+	display: inline-block;
+	position: relative;
+	font-size: 19px;
+	margin-right: 5px;
+}
+
+.flexer,.progress-indicator{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.no-flexer,.progress-indicator.stacked{display:block}.no-flexer-element{-ms-flex:0;-webkit-flex:0;-moz-flex:0;flex:0}.flexer-element,.progress-indicator>li{-ms-flex:1;-webkit-flex:1;-moz-flex:1;flex:1}.progress-indicator{margin:0 0 1em;padding:0;font-size:80%;text-transform:uppercase}.progress-indicator>li{list-style:none;text-align:center;width:auto;padding:0;margin:0;position:relative;text-overflow:ellipsis;color:#bbb;display:block}.progress-indicator>li:hover{color:#6f6f6f}.progress-indicator>li.completed,.progress-indicator>li.completed .bubble{color:#598f5b}.progress-indicator>li .bubble{border-radius:1000px;width:20px;height:20px;background-color:#bbb;display:block;margin:0 auto .5em;border-bottom:1px solid #888}.progress-indicator>li .bubble:after,.progress-indicator>li .bubble:before{display:block;position:absolute;top:9px;width:100%;height:3px;content:'';background-color:#bbb}.progress-indicator>li.completed .bubble,.progress-indicator>li.completed .bubble:after,.progress-indicator>li.completed .bubble:before{background-color:#598f5b;border-color:#247830}.progress-indicator>li .bubble:before{left:0}.progress-indicator>li .bubble:after{right:0}.progress-indicator>li.active,.progress-indicator>li.active .bubble{color:#337AB7}.progress-indicator>li.active .bubble,.progress-indicator>li.active .bubble:after,.progress-indicator>li.active .bubble:before{background-color:#337AB7;border-color:#122a3f}.progress-indicator>li a:hover .bubble,.progress-indicator>li a:hover .bubble:after,.progress-indicator>li a:hover .bubble:before{background-color:#5671d0;border-color:#1f306e}.progress-indicator>li a:hover .bubble{color:#5671d0}.progress-indicator>li.danger .bubble,.progress-indicator>li.danger .bubble:after,.progress-indicator>li.danger .bubble:before{background-color:#c75050;border-color:#440605}.progress-indicator>li.danger .bubble{color:#c75050}.progress-indicator>li.warning .bubble,.progress-indicator>li.warning .bubble:after,.progress-indicator>li.warning .bubble:before{background-color:#d69625;border-color:#5a4304}.progress-indicator>li.warning .bubble{color:#d69625}.progress-indicator>li.info .bubble,.progress-indicator>li.info .bubble:after,.progress-indicator>li.info .bubble:before{background-color:#5b32d6;border-color:#25135d}.progress-indicator>li.info .bubble{color:#5b32d6}.progress-indicator.stacked>li{text-indent:-10px;text-align:center;display:block}.progress-indicator.stacked>li .bubble:after,.progress-indicator.stacked>li .bubble:before{left:50%;margin-left:-1.5px;width:3px;height:100%}.progress-indicator.stacked .stacked-text{position:relative;z-index:10;top:0;margin-left:60%!important;width:45%!important;display:inline-block;text-align:left;line-height:1.2em}.progress-indicator.stacked>li a{border:none}.progress-indicator.stacked.nocenter>li .bubble{margin-left:0;margin-right:0}.progress-indicator.stacked.nocenter>li .bubble:after,.progress-indicator.stacked.nocenter>li .bubble:before{left:10px}.progress-indicator.stacked.nocenter .stacked-text{width:auto!important;display:block;margin-left:40px!important}@media handheld,screen and (max-width:400px){.progress-indicator{font-size:60%}}]]></css>
+</theme>

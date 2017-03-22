@@ -1,0 +1,20 @@
+<ips:template parameters="$array_bonus, $bonus" />
+<div class='ipsGrid ipsPad'>
+	<div class='ipsGrid_span8'>
+		<ul class="progress-indicator nocenter stacked ipsClearFix" data-role="wizardStepbar">
+			{{foreach $array_bonus as $k => $v}}
+				<li class='{{if !empty($bonus) && $bonus["actuel"] == $k}}completed{{elseif !empty($bonus) && $bonus["next"] == $k}}warning{{elseif !empty($bonus) && $bonus["prec"] == $k}}danger{{endif}}'>
+					<span class="bubble"></span>
+					<span class='stacked-text {{if !empty($bonus) && $bonus["next"] == $k}}ipsType_issue{{elseif !empty($bonus) && $bonus["prec"] == $k}}ipsType_warning{{endif}}'>{$k + 1}. {$v['bonus']['name']}</span>
+				</li>
+			{{endforeach}}
+		</ul>
+	</div>
+
+	<div class='ipsGrid_span4'>
+		<strong>Code couleur</strong><br>
+		<i class='fa fa-circle ipsType_success'></i> Bonus actuel<br>
+		<i class='fa fa-circle ipsType_issue'></i> Prochain bonus<br>
+		<i class='fa fa-circle ipsType_warning'></i> Bonus précédent
+	</div>
+</div>

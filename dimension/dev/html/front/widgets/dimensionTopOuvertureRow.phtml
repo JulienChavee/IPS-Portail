@@ -1,0 +1,19 @@
+<ips:template parameters="$topOuverture" />
+
+<ol class='ipsDataList ipsDataList_reducedSpacing cTopContributors'>
+	{{$idx = 1;}}
+	{{foreach $topOuverture as $memberId => $nbOuverture}}
+		{{$member = \IPS\Member::load( $memberId );}}
+		<li class='ipsDataItem'>
+			<div class='ipsDataItem_icon ipsPos_middle ipsType_center ipsType_large ipsType_light'><strong>{expression="$idx++"}</strong></div>
+			<div class='ipsDataItem_main ipsPhotoPanel ipsPhotoPanel_tiny'>
+				{template="userPhoto" app="core" group="global" params="$member, 'tiny'"}
+				<div>
+					{$member->link()|raw}
+					<br>
+					<span class='ipsRepBadge ipsRepBadge_positive'><i class='fa fa-map-marker'></i> {$nbOuverture}</span>
+				</div>
+			</div>
+		</li>
+	{{endforeach}}
+</ol>

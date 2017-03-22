@@ -1,0 +1,24 @@
+{
+    "dimension": {
+        "class": "\\IPS\\Widget",
+        "restrict": [
+            "sidebar",
+            "cms"
+        ],
+        "default_area": "",
+        "allow_reuse": true,
+        "menu_style": "menu",
+        "embeddable": true
+    },
+    "dimensionTopOuverture": {
+        "class": "\\IPS\\Widget\\StaticCache",
+        "restrict": [
+            "sidebar",
+            "cms"
+        ],
+        "default_area": "",
+        "allow_reuse": false,
+        "menu_style": "menu",
+        "embeddable": true
+    }
+}

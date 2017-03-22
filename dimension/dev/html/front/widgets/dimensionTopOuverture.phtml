@@ -1,0 +1,26 @@
+<ips:template parameters="$topOuverture" />
+<h3 class='ipsWidget_title ipsType_reset'>{lang="dimension_widget_title_topOuverture"}</h3>
+
+<div class='ipsTabs ipsTabs_small ipsTabs_stretch ipsClearfix' id='dimensionTopOuverture' data-ipsTabBar data-ipsTabBar-updateURL='false' data-ipsTabBar-contentArea='#dimensionPortailTopOuverture'>
+	<a href='#dimensionTopOuverture' data-action='expandTabs'><i class='fa fa-caret-down'></i></a>
+	<ul role="tablist" class='ipsList_reset'>
+		<li>
+			<a href='#ipsTabs_dimensionTopOuverture_el_week_panel' id='el_week' class='ipsTabs_item ipsTabs_activeItem' role="tab" aria-selected='true'>{lang="dimension_week"}</a>
+		</li>
+		<li>
+			<a href='{url="app=dimension&module=system&controller=ajax&do=topPoster&time=month"}' id='el_month' class='ipsTabs_item' role="tab" aria-selected='false'>{lang="dimension_month"}</a>
+		</li>		
+		<li>
+			<a href='{url="app=dimension&module=system&controller=ajax&do=topPoster&time=year"}' id='el_year' class='ipsTabs_item' role="tab" aria-selected='false'>{lang="dimension_year"}</a>
+		</li>
+		<li>
+			<a href='{url="app=dimension&module=system&controller=ajax&do=topPoster&time=all"}' id='el_all' class='ipsTabs_item' role="tab" aria-selected='false'>{lang="dimension_all"}</a>
+		</li>
+	</ul>
+</div>
+
+<section id='dimensionPortailTopOuverture' class='ipsWidget_inner'>
+	<div id="ipsTabs_dimensionTopOuverture_el_week_panel" class='ipsTabs_panel'>
+		{template="dimensionTopOuvertureRow" group="widgets" app="dimension" params="$topOuverture"}
+	</div>
+</section>

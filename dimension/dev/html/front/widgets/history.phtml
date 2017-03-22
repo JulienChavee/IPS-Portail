@@ -1,0 +1,33 @@
+<ips:template parameters="$data" />
+
+<div class='ipsPad'>
+	{{foreach $data as $k => $v}}
+		{{$member = \IPS\Member::load($v['member'])->link('', true);}}
+		{{$timestamp = strtotime($v['date']);}}
+
+		<div class="ipsGrid">
+			<div class="ipsGrid_span6">
+				<h1 id="dimension_utilisation" class="sAppName">
+					<span class="sAppBadge {{if $v['utilisation'] < 20}} sAppBadgeRed {{elseif $v['utilisation'] < 130/2}} sAppBadgeYellow {{else}} sAppBadgeGreen {{endif}}">{$v['utilisation']}</span> {lang="dimension_utilisation" pluralize="$v['utilisation']"}
+				</h1>
+			</div>
+
+			<div class="ipsGrid_span6">
+				<div class="ipsType_center">
+					<div class="ipsDataItem_statsLarge">
+						<span class="ipsDataItem_stats_number">
+							<i class="fa fa-map-marker"></i> [{$v['coordx']},{$v['coordy']}]
+						</span>
+					</div>
+				</div>
+
+				<div class="ipsType_center ipsType_light">
+					{lang="dimension_by"} {$member|raw} • {datetime="$timestamp"}
+				</div>
+			</div>
+		</div>
+		{{if $k != $data->count()-1}}
+			<hr class="ipsHr">
+		{{endif}}
+	{{endforeach}}
+</div>

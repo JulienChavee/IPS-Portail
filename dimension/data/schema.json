@@ -1,0 +1,453 @@
+{
+    "dimension_positionPortail": {
+        "name": "dimension_positionPortail",
+        "columns": {
+            "id": {
+                "name": "id",
+                "type": "BIGINT",
+                "length": 20,
+                "decimals": null,
+                "values": [],
+                "allow_null": false,
+                "default": null,
+                "comment": "ID Number",
+                "unsigned": true,
+                "zerofill": false,
+                "auto_increment": true,
+                "binary": false
+            },
+            "coordx": {
+                "name": "coordx",
+                "type": "INT",
+                "length": 11,
+                "decimals": null,
+                "values": [],
+                "allow_null": false,
+                "default": "0",
+                "comment": "",
+                "unsigned": false,
+                "zerofill": false,
+                "auto_increment": false,
+                "binary": false
+            },
+            "coordy": {
+                "name": "coordy",
+                "type": "INT",
+                "length": 11,
+                "decimals": null,
+                "values": [],
+                "allow_null": false,
+                "default": "0",
+                "comment": "",
+                "unsigned": false,
+                "zerofill": false,
+                "auto_increment": false,
+                "binary": false
+            },
+            "utilisation": {
+                "name": "utilisation",
+                "type": "INT",
+                "length": 11,
+                "decimals": null,
+                "values": [],
+                "allow_null": false,
+                "default": "0",
+                "comment": "",
+                "unsigned": true,
+                "zerofill": false,
+                "auto_increment": false,
+                "binary": false
+            },
+            "idPortail": {
+                "name": "idPortail",
+                "type": "BIGINT",
+                "length": 20,
+                "decimals": null,
+                "values": [],
+                "allow_null": false,
+                "default": "1",
+                "comment": "",
+                "unsigned": true,
+                "zerofill": false,
+                "auto_increment": false,
+                "binary": false
+            },
+            "date": {
+                "name": "date",
+                "type": "DATETIME",
+                "length": null,
+                "decimals": null,
+                "values": [],
+                "allow_null": true,
+                "default": null,
+                "comment": "",
+                "unsigned": false,
+                "zerofill": false,
+                "auto_increment": false,
+                "binary": false
+            },
+            "member": {
+                "name": "member",
+                "type": "BIGINT",
+                "length": 20,
+                "decimals": null,
+                "values": [],
+                "allow_null": true,
+                "default": null,
+                "comment": "",
+                "unsigned": true,
+                "zerofill": false,
+                "auto_increment": false,
+                "binary": false
+            },
+            "bonus": {
+                "name": "bonus",
+                "type": "BIGINT",
+                "length": 20,
+                "decimals": null,
+                "values": [],
+                "allow_null": false,
+                "default": "-1",
+                "comment": "",
+                "unsigned": false,
+                "zerofill": false,
+                "auto_increment": false,
+                "binary": false
+            },
+            "arbre_hakam": {
+                "name": "arbre_hakam",
+                "type": "TINYINT",
+                "length": 1,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": "0",
+                "comment": "",
+                "unsigned": true,
+                "zerofill": false,
+                "auto_increment": false,
+                "binary": false
+            }
+        },
+        "indexes": {
+            "PRIMARY": {
+                "type": "primary",
+                "name": "PRIMARY",
+                "columns": [
+                    "id"
+                ],
+                "length": [
+                    null
+                ]
+            }
+        },
+        "inserts": [
+            {
+                "id": "1",
+                "coordx": "0",
+                "coordy": "0",
+                "utilisation": "0",
+                "idPortail": "1",
+                "date": "1970-01-01 01:00:00",
+                "member": "0",
+                "bonus": "-1"
+            },
+            {
+                "id": "2",
+                "coordx": "0",
+                "coordy": "0",
+                "utilisation": "0",
+                "idPortail": "2",
+                "date": "1970-01-01 01:00:00",
+                "member": "0",
+                "bonus": "-1"
+            },
+            {
+                "id": "3",
+                "coordx": "0",
+                "coordy": "0",
+                "utilisation": "0",
+                "idPortail": "3",
+                "date": "1970-01-01 01:00:00",
+                "member": "0",
+                "bonus": "-1"
+            },
+            {
+                "id": "4",
+                "coordx": "0",
+                "coordy": "0",
+                "utilisation": "0",
+                "idPortail": "4",
+                "date": "1970-01-01 01:00:00",
+                "member": "0",
+                "bonus": "-1"
+            }
+        ]
+    },
+    "dimension_bonus": {
+        "name": "dimension_bonus",
+        "columns": {
+            "id": {
+                "allow_null": false,
+                "auto_increment": true,
+                "binary": false,
+                "comment": "ID Number",
+                "decimals": null,
+                "default": null,
+                "length": 20,
+                "name": "id",
+                "type": "BIGINT",
+                "unsigned": true,
+                "values": [],
+                "zerofill": false
+            },
+            "name": {
+                "allow_null": false,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": "",
+                "length": 0,
+                "name": "name",
+                "type": "TINYTEXT",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "description": {
+                "allow_null": false,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": "",
+                "length": 0,
+                "name": "description",
+                "type": "TEXT",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "portail": {
+                "allow_null": false,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": "-1",
+                "length": 11,
+                "name": "portail",
+                "type": "INT",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "ordre": {
+                "allow_null": true,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 0,
+                "name": "ordre",
+                "type": "TINYTEXT",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            }
+        },
+        "indexes": {
+            "PRIMARY": {
+                "type": "primary",
+                "name": "PRIMARY",
+                "length": [
+                    null
+                ],
+                "columns": [
+                    "id"
+                ]
+            }
+        },
+        "collation": "utf8mb4_unicode_ci",
+        "engine": "InnoDB",
+        "inserts": {
+            "1": {
+                "id": "1",
+                "name": "Puissance cyclique",
+                "description": "Les ennemis ont 50% de vitalit\u00e9 suppl\u00e9mentaire. Les alli\u00e9s gagnent 25% de dommages suppl\u00e9mentaires par tour \u00e0 partir du second tour et reviennent \u00e0 leurs dommages de base tous les 5 tours",
+                "portail": "-1",
+                "ordre": "[2,10,7,2]"
+            },
+            "2": {
+                "id": "2",
+                "name": "Liaison longue port\u00e9e",
+                "description": "Quand un ennemi est attaqu\u00e9, 20% des dommages qu'il subit sont renvoy\u00e9s aux ennemis \u00e0 plus de 10 PO",
+                "portail": "-1",
+                "ordre": "[6,8,3,6]"
+            },
+            "3": {
+                "id": "3",
+                "name": "Pouss\u00e9es revigorantes",
+                "description": "Quand un ennemi re\u00e7oit des dommages de pouss\u00e9e, une fois par tour, il g\u00e9n\u00e8re du soin aux alli\u00e9s autour de lui",
+                "portail": "-1",
+                "ordre": "[8,6,1,4]"
+            },
+            "4": {
+                "id": "4",
+                "name": "Invocations incapacitantes",
+                "description": "Les dommages occasionn\u00e9s par les invocations non-statiques enl\u00e8vent un tour d'envo\u00fbtement aux ennemis",
+                "portail": "-1",
+                "ordre": "[10,2,5,8]"
+            },
+            "5": {
+                "id": "5",
+                "name": "Disparition d\u00e9tonantes",
+                "description": "Quand un ennemi meurt, il occasionne des dommages \u00e0 ses alli\u00e9s autour de lui proportionnellement \u00e0 son nombre maximal de points de vie",
+                "portail": "-1",
+                "ordre": "[4,4,10,10]"
+            },
+            "6": {
+                "id": "6",
+                "name": "Entraves blessantes",
+                "description": "Les ennemis perdent des points de vie suppl\u00e9mentaires \u00e0 chaque retrait de PM subi",
+                "portail": "3",
+                "ordre": "[-1,-1,2,-1]"
+            },
+            "7": {
+                "id": "7",
+                "name": "D\u00e9placements incapacitants",
+                "description": "Lorsqu'un ennemi est port\u00e9, pouss\u00e9, attir\u00e9 ou transpos\u00e9, la dur\u00e9e de ses envo\u00fbtements est r\u00e9duite de 1 tour",
+                "portail": "3",
+                "ordre": "[-1,-1,4,-1]"
+            },
+            "8": {
+                "id": "8",
+                "name": "Solitude revigorante",
+                "description": "A chaque d\u00e9but de tour d'un alli\u00e9, s'il n'a aucun alli\u00e9 \u00e0 moins de 5 cases de lui, il est soign\u00e9 de 10% de sa vitalit\u00e9",
+                "portail": "3",
+                "ordre": "[-1,-1,6,-1]"
+            },
+            "9": {
+                "id": "9",
+                "name": "Solidaires",
+                "description": "A chaque d\u00e9but de tour, le personnage se soigne en fonction du nombre d'alli\u00e9s \u00e0 moins de 3 cases",
+                "portail": "3",
+                "ordre": "[-1,-1,8,-1]"
+            },
+            "10": {
+                "id": "10",
+                "name": "Distance mesur\u00e9e",
+                "description": "Les ennemis perdent 1 PM lorsqu'ils sont attaqu\u00e9s en m\u00eal\u00e9e. Limite de cumul \u00e0 3. Les alli\u00e9s subissent 20% de dommages en moins \u00e0 distance",
+                "portail": "3",
+                "ordre": "[-1,-1,9,-1]"
+            },
+            "11": {
+                "id": "11",
+                "name": "Coups bas",
+                "description": "Les dommages occasionn\u00e9s par les glyphes, pi\u00e8ges, poisons, bombes et invocations sur les ennemis sont multipli\u00e9s par 1,25",
+                "portail": "2",
+                "ordre": "[-1,1,-1,-1]"
+            },
+            "12": {
+                "id": "12",
+                "name": "Berserker",
+                "description": "Au d\u00e9but de leur tour, les alli\u00e9s gagnent une augmentation de 22% de dommages s'ils ont moins de 50% de leur vie",
+                "portail": "2",
+                "ordre": "[-1,3,-1,-1]"
+            },
+            "13": {
+                "id": "13",
+                "name": "Jeu dangereux",
+                "description": "Chaque alli\u00e9 pose un pi\u00e8ge \u00e0 ses pieds au d\u00e9but de son tour. Ce pi\u00e8ge occasionne des dommages aux ennemis et n'affecte pas les alli\u00e9s",
+                "portail": "2",
+                "ordre": "[-1,5,-1,-1]"
+            },
+            "14": {
+                "id": "14",
+                "name": "Larcin",
+                "description": "Les alli\u00e9s volent de la vie quand ils attaquent en m\u00eal\u00e9e",
+                "portail": "2",
+                "ordre": "[-1,7,-1,-1]"
+            },
+            "15": {
+                "id": "15",
+                "name": "Evasion",
+                "description": "Les attaques en m\u00eal\u00e9e poussent les ennemis de 3 cases",
+                "portail": "2",
+                "ordre": "[-1,9,-1,-1]"
+            },
+            "16": {
+                "id": "16",
+                "name": "Solitude momifiante",
+                "description": "\u00c0 chaque d\u00e9but de tour d'un alli\u00e9, s'il n'a aucun alli\u00e9 \u00e0 moins de 5 cases de lui, il se transforme en momie et r\u00e9duit les dommages re\u00e7us pendant 1 tour",
+                "portail": "1",
+                "ordre": "[9,-1,-1,-1]"
+            },
+            "17": {
+                "id": "17",
+                "name": "En qu\u00eate d'action",
+                "description": "Les ennemis perdent des points de vie suppl\u00e9mentaires \u00e0 chaque retrait de PA subi",
+                "portail": "1",
+                "ordre": "[1,-1,-1,-1]"
+            },
+            "18": {
+                "id": "18",
+                "name": "Saute-Bouftou",
+                "description": "Quand un alli\u00e9 subit des dommages d'un autre alli\u00e9, ce dernier est t\u00e9l\u00e9port\u00e9 sym\u00e9triquement par rapport \u00e0 sa cible",
+                "portail": "1",
+                "ordre": "[3,-1,-1,-1]"
+            },
+            "19": {
+                "id": "19",
+                "name": "Retour arri\u00e8re",
+                "description": "Quand un ennemi re\u00e7oit des dommages de m\u00eal\u00e9e, il retourne \u00e0 sa position pr\u00e9c\u00e9dente",
+                "portail": "1",
+                "ordre": "[5,-1,-1,-1]"
+            },
+            "20": {
+                "id": "20",
+                "name": "Actions entrav\u00e9es",
+                "description": "Les dommages d'arme retirent des PA aux adversaires",
+                "portail": "1",
+                "ordre": "[7,-1,-1,-1]"
+            },
+            "21": {
+                "id": "21",
+                "name": "R\u00e9g\u00e9n\u00e9ration Critique",
+                "description": "A chaque fois qu'un alli\u00e9 occasionne un coup critique, il est soign\u00e9 de 2% de sa vitalit\u00e9 maximale.",
+                "portail": "4",
+                "ordre": "[-1,-1,-1,1]"
+            },
+            "22": {
+                "id": "22",
+                "name": "Roulette \u00c9lementaire",
+                "description": "A chaque d\u00e9but de tour d'un alli\u00e9, il gagne al\u00e9atoirement 200 de caract\u00e9ristique dans un \u00e9l\u00e9ment pour 1 tour.",
+                "portail": "4",
+                "ordre": "[-1,-1,-1,3]"
+            },
+            "23": {
+                "id": "23",
+                "name": "Case Bonus",
+                "description": "A chaque d\u00e9but de tour d'un alli\u00e9, des cellules bonus sont pos\u00e9es \u00e0 4 cases de distance en ligne avec cet alli\u00e9. S'il se d\u00e9place sur une de ces cellule il gagne 2PA pour le tour en cours (non-cumulable).",
+                "portail": "4",
+                "ordre": "[-1,-1,-1,5]"
+            },
+            "24": {
+                "id": "24",
+                "name": "Cible prioritaire",
+                "description": "A chaque d\u00e9but de tour d'un ennemi, il y a 10% de chance pour que cet ennemi devienne une cible prioritaire : la premi\u00e8re fois qu'il subit des dommages dans le tour, son attaquant gagnera 2PA pour deux tours, non cumulable.",
+                "portail": "4",
+                "ordre": "[-1,-1,-1,7]"
+            },
+            "25": {
+                "id": "25",
+                "name": "Bonne distance",
+                "description": "Quand un ennemi subit des dommages, 20% de ses dommages soignent les alli\u00e9s situ\u00e9s \u00e0 une distance d'exactement 7 cases de la cible.",
+                "portail": "4",
+                "ordre": "[-1,-1,-1,9]"
+            }
+        }
+    }
+}
