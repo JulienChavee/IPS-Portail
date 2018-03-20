@@ -27,20 +27,19 @@
 				<ul class='ipsList_reset'>
 					{{foreach $elements as $collection}}
 						{{foreach $collection as $input}}
-							{{if $input->name == 'dimension_updateForm_position'}}
+							{{if $input->name == 'dimension_updateForm_position_x'}}
 								<li class="ipsFieldRow ipsClearfix " id="{$id}_{$input->name}">
 		
 									<label class="ipsFieldRow_label" for="{$input->name}">
-										{lang="{$input->name}"} {{if $input->required}}<span class="ipsFieldRow_required">{lang="required"}</span>{{endif}}
+										{lang="dimension_updateForm_position"} {{if $input->required}}<span class="ipsFieldRow_required">{lang="required"}</span>{{endif}}
 									</label>
 		
 									<div class="ipsFieldRow_content">
 										<span><strong>X</strong> </span>
-										<input type="number" name="{$input->name}[start]" size="3" value="{$input->start->value}" class="ipsField_tiny" min="{$input->start->options['min']}" max="{$input->start->options['max']}" step="any">
-										
-
+										<input type="number" name="{$input->name}" size="3" value="{$input->value}" class="ipsField_tiny" min="{$input->options['min']}" max="{$input->options['max']}" step="any">
+							{{elseif $input->name == 'dimension_updateForm_position_y'}}			
 										<span style="margin-left: 15px;"><strong>Y</strong> </span>
-										<input type="number" name="{$input->name}[end]" size="3" value="{$input->end->value}" class="ipsField_tiny" min="{$input->end->options['min']}" max="{$input->end->options['max']}" step="any">
+										<input type="number" name="{$input->name}" size="3" value="{$input->value}" class="ipsField_tiny" min="{$input->options['min']}" max="{$input->options['max']}" step="any">
 									</div>
 	
 								</li>

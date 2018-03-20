@@ -172,15 +172,14 @@ class _ajax extends \IPS\Dispatcher\Controller
 			$form = new \IPS\Helpers\Form( 'dimension_popup_updatePortail', 'save' );
 			$form->class = 'ipsForm_vertical';
 			$form->add( new \IPS\Helpers\Form\Select( 'dimension_updateForm_portail', (int) \IPS\Request::i()->id, true, array( 'options' => array( 1 => 'dimension_xelorium', 2 => 'dimension_srambad', 3 => 'dimension_enutrosor', 4 => 'dimension_ecaflipus' ) ) ) );
-			$form->add( new \IPS\Helpers\Form\NumberRange( 'dimension_updateForm_position', array( 'start' => (int) \IPS\Request::i()->coordx, 'end' => (int) \IPS\Request::i()->coordy ), true, array( 
-					'start' => array( 
-						'min' => -99,
-						'max' => 99 
-					),
-					'end' => array( 
-						'min' => -99,
-						'max' => 99
-					),
+			$form->add( new \IPS\Helpers\Form\Number( 'dimension_updateForm_position_x', (int) \IPS\Request::i()->coordx, true, array( 
+					'min' => -99,
+					'max' => 99
+				)
+			) );
+			$form->add( new \IPS\Helpers\Form\Number( 'dimension_updateForm_position_y', (int) \IPS\Request::i()->coordy, true, array(
+					'min' => -99,
+					'max' => 99
 				)
 			) );
 
@@ -193,9 +192,9 @@ class _ajax extends \IPS\Dispatcher\Controller
 			{
 				$portail = $this->_getLastPosition( $values['dimension_updateForm_portail'] );
 
-				if( $values['dimension_updateForm_position']['start'] != $portail['coordx'] || $values['dimension_updateForm_position']['end'] != $portail['coordy'] || $values['dimension_updateForm_utilisation'] != $portail['utilisation'] || $values['dimension_updateForm_bonus'] != $portail['bonus'] || $values['dimension_updateForm_arbre_hakam'] != $portail['arbre_hakam']) {
+				if( $values['dimension_updateForm_position_x'] != $portail['coordx'] || $values['dimension_updateForm_position_y'] != $portail['coordy'] || $values['dimension_updateForm_utilisation'] != $portail['utilisation'] || $values['dimension_updateForm_bonus'] != $portail['bonus'] || $values['dimension_updateForm_arbre_hakam'] != $portail['arbre_hakam']) {
 
-					\IPS\Db::i()->insert( 'dimension_positionPortail', array( 'coordx' => $values['dimension_updateForm_position']['start'], 'coordy' => $values['dimension_updateForm_position']['end'], 'arbre_hakam' => $values['dimension_updateForm_arbre_hakam'], 'utilisation' => $values['dimension_updateForm_utilisation'], 'idPortail' => $values['dimension_updateForm_portail'], 'date' => \IPS\DateTime::create()->strFormat( "%F %T" ), 'member' => \IPS\Member::loggedIn()->member_id, 'bonus' => $values['dimension_updateForm_bonus'] ) );
+					\IPS\Db::i()->insert( 'dimension_positionPortail', array( 'coordx' => $values['dimension_updateForm_position_x'], 'coordy' => $values['dimension_updateForm_position_y'], 'arbre_hakam' => $values['dimension_updateForm_arbre_hakam'], 'utilisation' => $values['dimension_updateForm_utilisation'], 'idPortail' => $values['dimension_updateForm_portail'], 'date' => \IPS\DateTime::create()->strFormat( "%F %T" ), 'member' => \IPS\Member::loggedIn()->member_id, 'bonus' => $values['dimension_updateForm_bonus'] ) );
 					\IPS\Output::i()->redirect( \IPS\Http\Url::internal( 'returnPortail='.\IPS\Request::i()->id ), 'saved' );
 				} else
 					\IPS\Output::i()->redirect( \IPS\Http\Url::internal( 'returnPortail='.\IPS\Request::i()->id ), 'dimension_update_noModificationFound' );

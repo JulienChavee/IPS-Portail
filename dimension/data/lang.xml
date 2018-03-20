@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language>
- <app key="dimension" version="10028">
+ <app key="dimension" version="10029">
   <word key="__app_dimension" js="0">Dimension</word>
   <word key="block_dimension" js="0">Position des portails</word>
   <word key="block_dimension_desc" js="0">Affiche la liste des portails</word>

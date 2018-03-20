@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <javascript app="dimension">
- <file javascript_app="dimension" javascript_location="front" javascript_path="controllers/change" javascript_name="ips.change.bonus.js" javascript_type="controller" javascript_version="10028" javascript_position="1000050"><![CDATA[;( function($, _, undefined){
+ <file javascript_app="dimension" javascript_location="front" javascript_path="controllers/change" javascript_name="ips.change.bonus.js" javascript_type="controller" javascript_version="10029" javascript_position="1000050"><![CDATA[;( function($, _, undefined){
 	"use strict";
 	
 	ips.controller.register('dimension.changeBonus', {
